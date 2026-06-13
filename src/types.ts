@@ -107,6 +107,8 @@ export interface AiEvaluation {
   relevanceScore: number; // 1-10
   personalizationScore: number; // 1-10
   timestamp: string;
+  tokenUsage?: number;
+  latencyMs?: number;
 }
 
 export interface AuditLog {

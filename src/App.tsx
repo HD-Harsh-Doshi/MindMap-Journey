@@ -141,6 +141,10 @@ export default function App() {
   const [isRegisterMode, setIsRegisterMode] = useState<boolean>(false);
   const [authLoading, setAuthLoading] = useState<boolean>(false);
 
+  // WCAG Accessibility & Eye Fatigue Control configurations
+  const [accessibilityTheme, setAccessibilityTheme] = useState<"standard" | "amber-shield" | "high-contrast">("standard");
+  const [accessibilityFontSize, setAccessibilityFontSize] = useState<"standard" | "large" | "xlarge">("standard");
+
   // Automated Integration Testing states
   const [isTestSuiteRunning, setIsTestSuiteRunning] = useState<boolean>(false);
   const [testResultLogs, setTestResultLogs] = useState<string[]>([]);
@@ -235,7 +239,7 @@ export default function App() {
         }
       }
     } catch (err) {
-      triggerAlert("info", "Welcome to MindMap Journey. Please connect or sign-in below.");
+      triggerAlert("info", "Welcome to STRIDE. Please connect or sign-in below.");
     } finally {
       setLoading(false);
     }
@@ -747,8 +751,33 @@ export default function App() {
     return "Critical Threshold (Urgent Recovery Required)";
   };
 
+  // Dynamic accessibility theme and layout calculators
+  const getRootStyles = () => {
+    let classes = "min-h-screen flex flex-col transition-all duration-300 ";
+    
+    // Theme selection
+    if (accessibilityTheme === "amber-shield") {
+      classes += "bg-amber-950/20 text-amber-100 selection:bg-amber-400 selection:text-black ";
+    } else if (accessibilityTheme === "high-contrast") {
+      classes += "bg-black text-white border-white selection:bg-yellow-400 selection:text-black ";
+    } else {
+      classes += "bg-slate-950 text-slate-100 selection:bg-cyan-500 selection:text-slate-900 ";
+    }
+
+    // Font size scaling
+    if (accessibilityFontSize === "large") {
+      classes += "text-base [&_p]:text-base [&_h3]:text-lg [&_h2]:text-xl [&_span]:text-sm ";
+    } else if (accessibilityFontSize === "xlarge") {
+      classes += "text-lg [&_p]:text-lg [&_h3]:text-xl [&_h2]:text-2xl [&_span]:text-base ";
+    } else {
+      classes += "text-sm ";
+    }
+
+    return classes;
+  };
+
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col font-sans selection:bg-cyan-500 selection:text-slate-900">
+    <div className={getRootStyles()}>
       
       {/* GLOBAL SYSTEM ALERTS */}
       {appAlert && (
@@ -776,7 +805,7 @@ export default function App() {
             <div>
               <div className="flex items-center gap-2">
                 <span className="font-bold text-lg lg:text-xl tracking-tight bg-gradient-to-r from-white via-slate-200 to-slate-400 bg-clip-text text-transparent">
-                  MindMap Journey
+                  STRIDE
                 </span>
                 <span className="text-[10px] uppercase tracking-wider font-semibold text-cyan-400 bg-cyan-950/50 px-2 py-0.5 rounded border border-cyan-500/20">
                   Twin Engine v2.5
@@ -821,6 +850,66 @@ export default function App() {
 
         </div>
       </header>
+
+      {/* WCAG 2.1 COGNITIVE ACCESSIBILITY PANEL */}
+      <section className="bg-slate-900/30 border-b border-slate-900/60 py-2 px-4 lg:px-8">
+        <div className="max-w-7xl mx-auto w-full flex flex-col md:flex-row items-center justify-between gap-3 text-xs">
+          <div className="flex items-center gap-2 text-slate-400 font-medium select-none">
+            <Sliders className="w-3.5 h-3.5 text-cyan-400 shrink-0" />
+            <span>Cognitive & Eye Fatigue Adjustments (WCAG 2.1 Guidance):</span>
+          </div>
+          
+          <div className="flex flex-wrap items-center gap-4">
+            {/* Text Scaling Selection */}
+            <div className="flex items-center gap-1.5">
+              <span className="text-slate-500">Text Size:</span>
+              <div className="flex bg-slate-950 p-0.5 rounded-lg border border-slate-800">
+                {[
+                  { id: "standard", label: "Default" },
+                  { id: "large", label: "Large" },
+                  { id: "xlarge", label: "Extra Large" }
+                ].map((opt) => (
+                  <button
+                    key={opt.id}
+                    onClick={() => setAccessibilityFontSize(opt.id as any)}
+                    className={`px-2.5 py-1 rounded text-[10px] font-bold tracking-tight transition-all ${
+                      accessibilityFontSize === opt.id 
+                        ? "bg-slate-900 border border-slate-800/80 text-cyan-400 font-extrabold shadow" 
+                        : "text-slate-500 hover:text-slate-300"
+                    }`}
+                  >
+                    {opt.label}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Blue-Light Eye Fatigue Filter Theme */}
+            <div className="flex items-center gap-1.5">
+              <span className="text-slate-500 font-serif">Study Comfort Shield:</span>
+              <div className="flex bg-slate-950 p-0.5 rounded-lg border border-slate-800">
+                {[
+                  { id: "standard", label: "Midnight Eclipse" },
+                  { id: "amber-shield", label: "Amber Rest Shield" },
+                  { id: "high-contrast", label: "AAA Contrast Boost" }
+                ].map((opt) => (
+                  <button
+                    key={opt.id}
+                    onClick={() => setAccessibilityTheme(opt.id as any)}
+                    className={`px-2.5 py-1 rounded text-[10px] font-bold tracking-tight transition-all ${
+                      accessibilityTheme === opt.id 
+                        ? "bg-slate-900 border border-slate-800/80 text-amber-400 font-extrabold shadow" 
+                        : "text-slate-500 hover:text-slate-300"
+                    }`}
+                  >
+                    {opt.label}
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* CORE FRAME LAYOUT */}
       {!isAuthenticated ? (
@@ -2302,7 +2391,7 @@ export default function App() {
       {/* FOOTER BAR */}
       <footer className="border-t border-slate-900 bg-slate-950 py-4 px-4 text-center text-xs text-slate-500">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-3">
-          <p>© 2026 MindMap Journey. Engineered with real-time biometric and cognitive distortion maps for full competitive prep.</p>
+          <p>© 2026 STRIDE. Engineered with real-time biometric and cognitive distortion maps for full competitive prep.</p>
           <div className="flex gap-4">
             <span className="hover:text-slate-300 transition-colors">Privacy Encryption</span>
             <span className="hover:text-slate-300 transition-colors">PII Redactor</span>
