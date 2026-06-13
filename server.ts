@@ -751,11 +751,11 @@ app.post("/api/journal/analyze", async (req, res) => {
                 items: {
                   type: Type.OBJECT,
                   properties: {
-                    type: { type: Type.STRING },
+                    distortionName: { type: Type.STRING },
                     description: { type: Type.STRING },
                     gentlyExplain: { type: Type.STRING }
                   },
-                  required: ["type", "description", "gentlyExplain"]
+                  required: ["distortionName", "description", "gentlyExplain"]
                 }
               }
             },
@@ -775,7 +775,15 @@ app.post("/api/journal/analyze", async (req, res) => {
       });
 
       const textResponse = response.text || "";
-      aiResponseJSON = JSON.parse(textResponse);
+      const parsed = JSON.parse(textResponse);
+      if (parsed && Array.isArray(parsed.distortions)) {
+        parsed.distortions = parsed.distortions.map((d: any) => ({
+          type: d.distortionName || d.type || "Imposter Syndrome Signals",
+          description: d.description || "",
+          gentlyExplain: d.gentlyExplain || ""
+        }));
+      }
+      aiResponseJSON = parsed;
       console.log("Journal Analyzed Successfully via Gemini", aiResponseJSON);
     } catch (err) {
       console.error("Gemini failed, loading fallback generator", err);

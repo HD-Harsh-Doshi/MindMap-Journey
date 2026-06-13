@@ -1,11 +1,11 @@
-# MindMap Journey - Academic Mental Wellness Digital Twin
+# STRIDE - Academic Mental Wellness Digital Twin
 
-Tagline: *"Your AI Study Companion That Understands The Story Behind Your Stress"*
+Tagline: *"Every Day Forward"*
 
 ---
 
 ## 🚀 Concept Overview
-Students preparing for critical competitive examinations (e.g., **JEE, NEET, UPSC, CAT, CUET, GATE**) suffer severe academic pressure, sleep degradation, social comparison, and fear of failure. **MindMap Journey** tackles this issue not with static charts or generic questionnaires, but through a persistent **Academic Mental Wellness Digital Twin**.
+Students preparing for critical competitive examinations (e.g., **JEE, NEET, UPSC, CAT, CUET, GATE**) suffer severe academic pressure, sleep degradation, social comparison, and fear of failure. **STRIDE** tackles this issue not with static charts or generic questionnaires, but through a persistent **Academic Mental Wellness Digital Twin**.
 
 The Digital Twin continuously maintains stress levels, confidence retainers, burnout alarms, sleep efficiency, and focus depth updated dynamically in response to deep daily journaling.
 
@@ -63,4 +63,4 @@ The system utilizes a custom **Cosmic Slate Dark Theme** designed for eye relaxa
 ---
 
 ## 🔒 Security & PII Redactor
-MindMap Journey automatically intercepts journal scripts to inspect and redact standard Indian telephone numbers, international emails, and names, ensuring private local-host diagnostic storage. Full enterprise audit logs are appended to the administrative panel on every role action.
+STRIDE automatically intercepts journal scripts to inspect and redact standard Indian telephone numbers, international emails, and names, ensuring private local-host diagnostic storage. Full enterprise audit logs are appended to the administrative panel on every role action.

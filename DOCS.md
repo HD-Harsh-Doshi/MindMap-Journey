@@ -1,9 +1,9 @@
-# MindMap Journey - System Architecture & Product Requirements
+# STRIDE - System Architecture & Product Requirements
 
 ## 1. Product Requirement Document (PRD)
 
 ### Concept: Academic Mental Wellness Digital Twin
-MindMap Journey is designed for students preparing for high-stakes Indian exams (NEET, JEE, UPSC, CAT, CUET, GATE). Instead of a generic dashboard, it maintains a server-side **Academic Mental Wellness Digital Twin** that continuously updates a student's virtual status (stress level, focus depth, burnout risk, sleep efficiency, study consistency) from journaling and behavior.
+STRIDE is designed for students preparing for high-stakes Indian exams (NEET, JEE, UPSC, CAT, CUET, GATE). Instead of a generic dashboard, it maintains a server-side **Academic Mental Wellness Digital Twin** that continuously updates a student's virtual status (stress level, focus depth, burnout risk, sleep efficiency, study consistency) from journaling and behavior.
 
 ### Target Personas & Key Roles
 1. **Student**: Interacts with the AI companion, journals via voice or text, tracks their mood/focus, views their digital twin, accesses tailored mindfulness, and reviews their study milestones.
