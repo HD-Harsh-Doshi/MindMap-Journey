@@ -1,0 +1,8 @@
+{
+  "name": "MindMap Journey",
+  "description": "Your AI Study Companion That Understands The Story Behind Your Stress. Academic Mental Wellness Digital Twin.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

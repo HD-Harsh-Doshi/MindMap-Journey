@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  /* Override default slate scale with an organic, ocular-safe, bright light theme */
+  --color-slate-950: #F4F7F6;       /* Comforting light sage-mist canvas background */
+  --color-slate-900: #FFFFFF;       /* Absolute pure white for crisp structural card modules */
+  --color-slate-850: #E2ECE7;       /* Soft pastel gray-green borders */
+  --color-slate-800: #E2ECE7;       /* Warm border lines */
+  --color-slate-700: #C3DAD0;       /* Divider rings and focused outline elements */
+  --color-slate-650: #99BDB0;       /* Muted sage labels and states */
+  --color-slate-600: #658778;       /* Peaceful olive-sage secondary details */
+  --color-slate-500: #4B6B5E;       /* Midweight body helper tags */
+  --color-slate-400: #334E43;       /* High-contrast content text (easy to read continuously) */
+  --color-slate-300: #1F3029;       /* Solid deep pine subheadings */
+  --color-slate-200: #121F1A;       /* Ultra-bold majestic dark slate display characters */
+  --color-slate-100: #09100D;       /* Pure focus headings */
+
+  /* Standardizer semantic focus colors for stress scales */
+  --color-emerald-500: #10B981;
+  --color-emerald-600: #059669;
+  --color-cyan-400: #0F766E;        /* Darker cyan so contrast is accessible under sunlight */
+  --color-cyan-500: #0D9488;
+  --color-indigo-500: #4F46E5;
+  --color-indigo-600: #4338CA;
+  
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+body {
+  background-color: #F4F7F6;
+  color: #334E43;
+}
+
+/* Custom scrollbar curves to keep the platform look polished and integrated */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #F4F7F6;
+}
+::-webkit-scrollbar-thumb {
+  background: #C3DAD0;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #658778;
+}
